@@ -1,6 +1,8 @@
 # my-chat.io
 Chat Application with different rooms and multiple users. Developed with React, Node.js and Socket.io.
 
-Still In-Progress.
+Clone it.
 
-Will be updating soon
+Run Commands:
+
+npm i && npm start in both client and server
