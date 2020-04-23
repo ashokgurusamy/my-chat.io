@@ -8,7 +8,7 @@ class Footer extends Component {
         class="footer"
         style={{
           textAlign: "center",
-          marginTop: 10
+          paddingTop: 20
         }}
       >
         <img

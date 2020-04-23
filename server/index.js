@@ -2,14 +2,19 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users.js");
+const cors = require("cors");
 
-const PORT = process.env.PORT || 5000; //To run on which port
+const PORT = process.env.PORT || 3000; //To run on which port
 const router = require("./router");
 
 const app = express();
 const server = http.createServer(app); //initialize the server
 const io = socketio(server); //instance of socketio. to make socket.io server working
 
+// var allowedOrigins = "http://localhost:3000";
+// io.set("origins", "http://localhost:3000");
+
+// io.set("origins", "http://localhost:3000");
 //To know the client connection instance created
 io.on("connection", socket => {
   socket.on("join", ({ name, room }, callback) => {
@@ -27,5 +32,6 @@ io.on("connection", socket => {
 //End
 
 app.use(router);
+app.use(cors());
 server.listen(PORT, () => console.log(`server running on ${PORT}`));
 //server.listen(PORT, () => console.log("server has started  on port ${PORT}")); //to make server working

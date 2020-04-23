@@ -21,3 +21,12 @@
 [data-css-1qyrjaz] {
   right: 10px;
 }
+.footer {
+  border-top: 2px solid #efefef;
+}
+
+@media only screen and (max-width: 500px) {
+  .messages {
+    min-height: 50vh;
+  }
+}
