@@ -8,7 +8,7 @@ import InfoBar from "../InfoBar/InfoBar";
 import Footer from "../footer/footer";
 import Input from "../Input/Input";
 
-import "./Chat.css";
+import "./chat.css";
 
 let socket;
 
@@ -26,6 +26,9 @@ const Chat = ({ location }) => {
 
   // The initialization vector (must be 16 bytes)
   var iv = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36];
+  var encryptedHex;
+
+  var aes256 = require("aes256");
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -58,32 +61,52 @@ const Chat = ({ location }) => {
     };
   }, [messages]);
 
+  // const encryptMsg = event => {
+  //   event.preventDefault();
+  //   alert();
+  //   if (message) {
+  //     var text = "hi";
+  //     var textBytes = aesjs.utils.utf8.toBytes(text);
+
+  //     var aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
+  //     var encryptedBytes = aesCbc.encrypt(textBytes);
+
+  //     // To print or store the binary data, you may convert it to hex
+
+  //     encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+  //     console.log(message, room, name, messages.length);
+  //     socket.emit("encryptMsg", message, () => setMessage(""));
+
+  //     console.log(encryptedHex);
+  //   }
+  // };
+  function encryptMsg() {
+    // var text = message;
+    // var textBytes = aesjs.utils.utf8.toBytes(text);
+
+    // var aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
+    // var encryptedBytes = aesCbc.encrypt(textBytes);
+
+    // // To print or store the binary data, you may convert it to hex
+
+    // encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+    // console.log(message, room, name, messages.length);
+
+    var key = "my passphrase";
+    var plaintext = message;
+
+    var encrypted = aes256.encrypt(key, plaintext);
+    var decrypted = aes256.decrypt(key, encrypted);
+    console.log("encrypted is: " + encrypted, " decrypted is: ", decrypted);
+  }
+
   const sendMessage = event => {
     event.preventDefault();
 
     if (message) {
       console.log("Comes from chat.js: ", message, room, name, messages.length);
+      encryptMsg();
       socket.emit("sendMessage", message, () => setMessage(""));
-    }
-  };
-
-  const encryptMsg = event => {
-    event.preventDefault();
-    alert();
-    if (message) {
-      var text = "hi";
-      var textBytes = aesjs.utils.utf8.toBytes(text);
-
-      var aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
-      var encryptedBytes = aesCbc.encrypt(textBytes);
-
-      // To print or store the binary data, you may convert it to hex
-      var encryptedHex;
-      encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
-      console.log(message, room, name, messages.length);
-      socket.emit("encryptMsg", message, () => setMessage(""));
-
-      console.log(encryptedHex);
     }
   };
 

@@ -6,7 +6,7 @@ import Message from "./Message/Message";
 
 import "./Messages.css";
 
-import Chat from "../Chat/Chat";
+import Chat from "../chat/Chat";
 
 const Messages = ({ messages, name }) => (
   <ScrollToBottom className="messages">
@@ -17,6 +17,5 @@ const Messages = ({ messages, name }) => (
     ))}
   </ScrollToBottom>
 );
-console.log("from Messages.js: ", Messages.length);
 
 export default Messages;
