@@ -2,7 +2,6 @@
   "homepage": "https://github.com/ashokgurusamy/my-chat.io",
   "name": "@ashokgurusamy/my-chat.io",
   "version": "0.1.0",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/ashokgurusamy/my-chat.io"
