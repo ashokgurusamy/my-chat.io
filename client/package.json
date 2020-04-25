@@ -1,8 +1,12 @@
 {
-  "homepage": "http://ashokgurusamy.github.io/my-chat",
-  "name": "project_chat_application",
+  "homepage": "https://github.com/ashokgurusamy/my-chat.io",
+  "name": "@ashokgurusamy/my-chat.io",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashokgurusamy/my-chat.io.git"
+  },
   "dependencies": {
     "aes-js": "^3.1.2",
     "aes256": "^1.0.4",
@@ -18,9 +22,9 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -47,5 +51,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
   }
 }

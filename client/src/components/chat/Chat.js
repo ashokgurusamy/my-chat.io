@@ -61,37 +61,7 @@ const Chat = ({ location }) => {
     };
   }, [messages]);
 
-  // const encryptMsg = event => {
-  //   event.preventDefault();
-  //   alert();
-  //   if (message) {
-  //     var text = "hi";
-  //     var textBytes = aesjs.utils.utf8.toBytes(text);
-
-  //     var aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
-  //     var encryptedBytes = aesCbc.encrypt(textBytes);
-
-  //     // To print or store the binary data, you may convert it to hex
-
-  //     encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
-  //     console.log(message, room, name, messages.length);
-  //     socket.emit("encryptMsg", message, () => setMessage(""));
-
-  //     console.log(encryptedHex);
-  //   }
-  // };
   function encryptMsg() {
-    // var text = message;
-    // var textBytes = aesjs.utils.utf8.toBytes(text);
-
-    // var aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
-    // var encryptedBytes = aesCbc.encrypt(textBytes);
-
-    // // To print or store the binary data, you may convert it to hex
-
-    // encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
-    // console.log(message, room, name, messages.length);
-
     var key = "my passphrase";
     var plaintext = message;
 
