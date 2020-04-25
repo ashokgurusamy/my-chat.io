@@ -5,12 +5,13 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/ashokgurusamy/my-chat.io.git"
+    "url": "https://github.com/ashokgurusamy/my-chat.io"
   },
   "dependencies": {
     "aes-js": "^3.1.2",
     "aes256": "^1.0.4",
     "bootstrap": "^4.4.1",
+    "gh-pages": "^2.2.0",
     "query-string": "^6.8.2",
     "react": "^16.9.0",
     "react-custom-scrollbars": "^4.2.1",
@@ -53,6 +54,6 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   }
 }
