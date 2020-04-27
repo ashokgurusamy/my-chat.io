@@ -19,9 +19,9 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  //const ENDPOINT = "https://project-mychat.herokuapp.com/";
+  //const ENDPOINT = "https://project-mychat.herokuapp.com";
   //const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const ENDPOINT = "https://project-chat-application.herokuapp.com/";
+  const ENDPOINT = "http://project-chat-application.herokuapp.com/";
   var aes256 = require("aes256");
 
   useEffect(() => {
