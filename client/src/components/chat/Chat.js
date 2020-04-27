@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
+import $ from "jquery";
 
 import TextContainer from "../TextContainer/TextContainer";
 import Messages from "../Messages/Messages";
@@ -21,13 +22,6 @@ const Chat = ({ location }) => {
   //const ENDPOINT = "https://project-mychat.herokuapp.com/";
   //const proxyurl = "https://cors-anywhere.herokuapp.com/";
   const ENDPOINT = "https://project-chat-application.herokuapp.com/";
-  var aesjs = require("aes-js");
-  var key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-  // The initialization vector (must be 16 bytes)
-  var iv = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36];
-  var encryptedHex;
-
   var aes256 = require("aes256");
 
   useEffect(() => {
@@ -76,9 +70,25 @@ const Chat = ({ location }) => {
     if (message) {
       console.log("Comes from chat.js: ", message, room, name, messages.length);
       encryptMsg();
+      post();
       socket.emit("sendMessage", message, () => setMessage(""));
     }
   };
+
+  function post() {
+    $.post(
+      "https://apex.oracle.com/pls/apex/my-chat/storemessages/insert",
+      {
+        UserName: name,
+        MsgOrder: messages.length,
+        MessageContent: message,
+        RoomName: room
+      },
+      function(data, status) {
+        console.log("Data Stored Suucessfully");
+      }
+    );
+  }
 
   return (
     <div className="Parent">
